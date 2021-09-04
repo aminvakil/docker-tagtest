@@ -64,7 +64,7 @@ jobs:
         id: get_version
         run: |
           echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\/v/}
-          TAG=${GITHUB_REF/refs\/tags\v/}
+          TAG=${GITHUB_REF/refs\/tags\/v/}
           echo ::set-output name=VERSION::${TAG%-*}
 
       - name: Set up Docker Buildx
