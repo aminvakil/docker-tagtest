@@ -62,7 +62,9 @@ jobs:
     steps:
       - name: Get the tag version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+        run: |
+          echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\/v/}
+          echo ::set-output name=VERSION::${TAG%-*}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -81,7 +83,9 @@ jobs:
           pull: true
           push: true
           tags: |
-            quay.io/aminvakil/tagtest:${{ env.TAG_VERSION }}
+            quay.io/aminvakil/tagtest:${{ env.TAG }}
+            quay.io/aminvakil/tagtest:${{ env.VERSION }}
             quay.io/aminvakil/tagtest:latest
         env:
-          TAG_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          TAG: ${{ steps.get_version.outputs.TAG }}
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
