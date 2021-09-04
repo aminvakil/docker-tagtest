@@ -63,7 +63,7 @@ jobs:
           exit-code: '1'
 
   deploy:
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: [hadolint, build]
     name: Push to Quay
     runs-on: ubuntu-latest
