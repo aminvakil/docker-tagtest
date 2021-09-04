@@ -80,8 +80,8 @@ jobs:
           file: ./Dockerfile
           pull: true
           push: true
-          tags:
-            - quay.io/aminvakil/tagtest:${{ env.TAG_VERSION }}
-            - quay.io/aminvakil/tagtest:latest
+          tags: |
+            quay.io/aminvakil/tagtest:${{ env.TAG_VERSION }}
+            quay.io/aminvakil/tagtest:latest
         env:
           TAG_VERSION: ${{ steps.get_version.outputs.VERSION }}
