@@ -1,8 +1,8 @@
-FROM alpine:3.14.2
+FROM alpine:3.15.4
 
 LABEL maintainer="Amin Vakil <info@aminvakil.com>"
 
-ENV SQUID_VERSION=5.0.6-r2
+ENV SQUID_VERSION=5.2-r0
 
 RUN apk add --no-cache squid="$SQUID_VERSION" && \
     set -x \
