@@ -27,7 +27,7 @@ jobs:
 
       - name: Install hadolint.
         run: |
-          sudo curl -L https://github.com/hadolint/hadolint/releases/download/v$HADOLINT_VERSION/hadolint-$(uname -s)-$(uname -m) -o /usr/local/bin/hadolint
+          sudo curl -L "https://github.com/hadolint/hadolint/releases/download/v$HADOLINT_VERSION/hadolint-$(uname -s)-$(uname -m)" -o /usr/local/bin/hadolint
           sudo chmod 755 /usr/local/bin/hadolint
         env:
           HADOLINT_VERSION: 2.10.0
