@@ -35,9 +35,13 @@ jobs:
         run: |
           df -h
           sudo rm -rf /opt/ghc || true
+          df -h
           sudo rm -rf /usr/local/.ghcup || true
+          df -h
           sudo rm -rf /opt/cabal || true
+          df -h
           sudo rm -rf /home/runner/.ghcup || true
+          df -h
           sudo rm -rf /home/runner/.cabal || true
           df -h
           exit 1
