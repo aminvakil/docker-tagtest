@@ -33,6 +33,7 @@ jobs:
       - name: test
         shell: bash
         run: |
+          set -x
           df -h
           sudo rm -rf /opt/ghc || true
           df -h
