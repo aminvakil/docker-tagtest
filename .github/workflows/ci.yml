@@ -34,14 +34,11 @@ jobs:
         shell: bash
         run: |
           df -h
-          time sudo rm -rf /usr/local/lib/android || true
-          df -h
-          time sudo rm -rf /opt/android || true
-          df -h
-          time sudo rm -rf /usr/local/android-sdk || true
-          df -h
-          time sudo rm -rf /home/runner/Android || true
-          df -h
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /opt/cabal || true
+          sudo rm -rf /home/runner/.ghcup || true
+          sudo rm -rf /home/runner/.cabal || true
           exit 1
 
       - name: Find an open port.
