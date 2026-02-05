@@ -1,0 +1,32 @@
+---
+name: Release
+'on':
+  push:
+    branches:
+      - tag_test
+    paths:
+      - 'ipv4.txt'
+      - 'ipv6.txt'
+
+jobs:
+
+  Release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@main
+
+      - name: Create tag
+        run: |
+          TODAYDATE=$(date -u "+%Y%m%d")
+          if [[ $(git tag | grep "${TODAYDATE}") ]]; then
+              SUFFIX=1
+          else
+              LATEST_TAG=$(git describe --tags --abbrev=0)
+              SUFFIX=$(echo ${LATEST_TAG} | sed "s/${TODAYDATE}-//")
+              SUFFIX=$((SUFFIX+1))
+          fi
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:%s | git tag --sign ${TODAYDATE}-${SUFFIX} -F -
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
