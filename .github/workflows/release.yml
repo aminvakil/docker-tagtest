@@ -22,6 +22,8 @@ jobs:
       - name: Create tag
         run: |
           set -x
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
           TODAYDATE=$(date -u "+%Y%m%d")
           if [[ $(git tag | grep "${TODAYDATE}") ]]; then
               SUFFIX=1
