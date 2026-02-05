@@ -25,7 +25,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
           TODAYDATE=$(date -u "+%Y%m%d")
-          if [[ $(git tag | grep "${TODAYDATE}") ]]; then
+          if [[ ! $(git tag | grep "${TODAYDATE}") ]]; then
               SUFFIX=1
           else
               LATEST_TAG=$(git describe --tags --abbrev=0)
