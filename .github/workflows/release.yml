@@ -33,5 +33,6 @@ jobs:
               SUFFIX=$((SUFFIX+1))
           fi
           git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:%s | git tag ${TODAYDATE}-${SUFFIX} -F -
+          git push --tags
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
