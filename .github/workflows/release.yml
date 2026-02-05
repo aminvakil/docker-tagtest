@@ -19,6 +19,7 @@ jobs:
 
       - name: Create tag
         run: |
+          set -x
           TODAYDATE=$(date -u "+%Y%m%d")
           if [[ $(git tag | grep "${TODAYDATE}") ]]; then
               SUFFIX=1
